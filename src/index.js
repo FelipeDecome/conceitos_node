@@ -12,7 +12,17 @@ app.get("/repositories", (request, response) => {
 });
 
 app.post("/repositories", (request, response) => {
-  // TODO
+  const { title, owner } = request.body;
+
+  const repository = {
+    id: uuid(),
+    title,
+    owner,
+  };
+
+  repositories.push(repository);
+
+  return response.status(201).json(repository);
 });
 
 app.put("/repositories/:id", (request, response) => {
